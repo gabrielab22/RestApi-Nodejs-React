@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        dostupnost: {
+        zakasnina: {
             type: DataTypes.FLOAT,
             allowNull: false,
         },
