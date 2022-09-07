@@ -22,4 +22,18 @@ router.post("/", async (req, res) => {
     res.json(korisnik);
 });
 
+
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+
+    const korisnik = await Korisnik.findOne({ where: {email: email}});
+
+    if (!korisnik) res.json({error: "Korisnik ne postoji!"});
+    
+    const result = password.localeCompare(korisnik.password);
+    if (result) res.json({error: "Kriva kombinacija email-a i lozinke"});
+
+    res.json("You are logged in");
+});
+
 module.exports = router;
