@@ -17,6 +17,9 @@ app.use("/autori", autorRouter);
 const zanrRouter = require('./routes/zanr');
 app.use("/zanrovi", zanrRouter);
 
+const korisnikRoute = require('./routes/Korisnici');
+app.use("/korisnici", korisnikRoute);
+
 
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {

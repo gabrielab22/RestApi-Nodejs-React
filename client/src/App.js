@@ -1,28 +1,24 @@
 import './App.css';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
+import Home from './pages/home';
+import KreirajKnjigu from './pages/KreirajKnjigu';
+import KreirajKorisnika from './pages/KreirajKorisnika';
 
 function App() {
 
-  const [listaKnjiga, setListaKnjiga] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/knjige").then((response) => {
-      setListaKnjiga(response.data);
-    });
-  }, []);
 
   return (
     <div className="App">
-      {listaKnjiga.map((value, key) => {
-        const uvjet = value.dostupnost === true;
-        return <div className="knjiga"> 
-        <div className="naziv_knjige" style = {{backgroundColor: uvjet ? "green": "red"}}> ode ide autor, {value.id_autora} </div>
-        <div className="godina" > {value.naziv_knjige}</div>
-        <div className="footer" style = {{backgroundColor: uvjet ? "green": "red"}}> {value.godina_izdanja}<button className = {uvjet ? "button": "hidden"}> Rezerviraj</button> </div>
-
-        </div>;
-      })}
+      <Router>
+        <Link to ="/">Home</Link>
+        <Link to ="/kreirajknjigu">Kreiraj knjigu</Link>
+        <Link to ="/kreirajkorisnika">Kreiraj korisnika</Link>
+        <Routes>
+          <Route path = "/" element = {<Home/>}/>
+          <Route path = "/kreirajknjigu" element = {<KreirajKnjigu/>}/>
+          <Route path = "/kreirajkorisnika" element = {<KreirajKorisnika/>}/>
+        </Routes>
+      </Router>
     </div>
   );
 }
