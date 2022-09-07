@@ -43,22 +43,21 @@ function KreirajKnjigu() {
             <Form className="formContainer">
             <br/>
                 <label> ID: </label>
-                <Field name="id_knjige" placeholder="Unesite id"/>
+                <Field name="id_knjige" id="field" placeholder="Unesite ID"/>
                 <label> Naziv: </label>
-                <Field name="naziv_knjige" placeholder="Unesite naziv"/>
-                <label> Autor: </label>
-                <Field name="id_autora" placeholder="Unesite autora"/>
+                <Field name="naziv_knjige" id="field" placeholder="Unesite naziv knjige"/>
+                <label> ID autora: </label>
+                <Field name="id_autora" id="field" placeholder="Unesite ID autora"/>
                 <label> Godina: </label>
-                <Field name="godina_izdanja" placeholder="Unesite godinu"/>
-                <label> Zanr: </label>
-                <Field name="id_zanra" placeholder="Unesite zanr"/>
+                <Field name="godina_izdanja" id="field" placeholder="Unesite godinu izdavanja"/>
+                <label> ID zanra: </label>
+                <Field name="id_zanra" id="field" placeholder="Unesite ID zanra"/>
                 <label> Dostupnost: </label>
-
-                <Field name="dostupnost" options={dostupnost} />
+                <Field name="dostupnost" id="field" options={dostupnost} placeholder="true/false"/>
                 <label> Zakasnina: </label>
-                <Field name="zakasnina"/>
+                <Field name="zakasnina" id="field" placeholder="0.0"/>
                 <label> Datum posudbe: </label>
-                <Field name="datum_posudbe" placeholder="Datum posudbe"/>
+                <Field name="datum_posudbe" id="field" placeholder="1.1.2000"/>
                 <br/><br/>
                 <button type="submit"> Kreiraj knjigu </button>
             </Form>

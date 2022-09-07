@@ -69,7 +69,7 @@ body {
 /* navbar */
 .navbar {
   width: 60%;
-  height: 80px;
+  height: 70px;
   background-color:darkseagreen;
   display: flex;
   align-items: center;
@@ -83,6 +83,7 @@ body {
   margin-right: 20px;
   text-decoration: none;
   color: white;
+  font-size: 20px;
 }
 /* navbar kraj */
 
@@ -102,28 +103,30 @@ body {
   justify-content: center;
   width: 500px;
   height: auto;
-  padding: 20px;
-  border: 5px solid dodgerblue;
+  padding: 10px;
+  border: 5px solid darkseagreen;
   border-radius: 5px;
+  margin-top: 130px;
+  font-size: 15px;
 }
 
-.formContainer #inputKreirajKorisnika {
-  height: 40px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+.formContainer #field {
+  height: 30px;
+  margin-top: 3px;
+  margin-bottom: 8px;
   border: 2px solid grey;
   border-radius: 10px;
   padding-left: 10px;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .formContainer button {
-  margin-top: 15px;
   height: 40px;
   border: none;
-  background-color: dodgerblue;
+  background-color: rgb(96, 167, 96);
   border-radius: 10px;
   color: white;
+  font-size: 20px;
 }
 
 .formContainer button:hover {

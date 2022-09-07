@@ -1,6 +1,6 @@
 import React from "react";
 import '../App.css';
-import {Formik, Form, Field} from 'formik';
+import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup'
 import axios from "axios";
 
@@ -36,17 +36,18 @@ function KreirajKorisnika() {
             <Form className="formContainer">
             <br/>
                 <label> ID: </label>
-                <Field name="id_korisnika" placeholder="Unesite id"/>
+                <ErrorMessage name="title" component="span" />
+                <Field name="id_korisnika" id="field" placeholder="Unesite id"/>
 
                 <label> E-mail: </label>
-                <Field name="email" placeholder="Unesite email"/>
+                <Field name="email" id="field" placeholder="Unesite email"/>
                 <label> Password: </label>
-                <Field name="password" type="password" placeholder="Unesite lozinku"/>
+                <Field name="password" id="field" type="password" placeholder="Unesite lozinku"/>
                 <br/><br/>
                 <label > Administrator: </label>
-                <Field name="administrator" value={false}/>
+                <Field name="administrator" id="field" value={false}/>
                 <label > Posudene knjige: </label>
-                <Field name="iznajmljene" />
+                <Field name="iznajmljene" id="field" />
                 <br/><br/>
                 <button type="submit"> Kreiraj korisnika </button>
             </Form>
