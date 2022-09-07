@@ -10,9 +10,11 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <div className='navbar'>
         <Link to ="/">Home</Link>
         <Link to ="/kreirajknjigu">Kreiraj knjigu</Link>
         <Link to ="/kreirajkorisnika">Kreiraj korisnika</Link>
+        </div>
         <Routes>
           <Route path = "/" element = {<Home/>}/>
           <Route path = "/kreirajknjigu" element = {<KreirajKnjigu/>}/>

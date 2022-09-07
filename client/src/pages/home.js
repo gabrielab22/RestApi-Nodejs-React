@@ -16,9 +16,9 @@ function Home() {
         {listaKnjiga.map((value, key) => {
           const uvjet = value.dostupnost === true;
           return <div className="knjiga"> 
-          <div className="naziv_knjige" style = {{backgroundColor: uvjet ? "green": "red"}}> ode ide autor, {value.id_autora} </div>
-          <div className="godina" > {value.naziv_knjige}</div>
-          <div className="footer" style = {{backgroundColor: uvjet ? "green": "red"}}> {value.godina_izdanja}<button className = {uvjet ? "button": "hidden"}> Rezerviraj</button> </div>
+          <div className="naziv_knjige" style = {{backgroundColor: "darkseagreen"}}>{value.naziv_knjige} </div>
+          <div className="godina" >  ode ide autor, {value.id_autora} <br/> {value.godina_izdanja} </div>
+          <div className="footer" style = {{backgroundColor: uvjet ? "green": "red"}}> <button className = {uvjet ? "button": "hidden"}> Rezerviraj</button> </div>
   
           </div>;
         })}

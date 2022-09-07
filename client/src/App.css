@@ -3,7 +3,6 @@
   height: auto;
   display: flex;
   align-items: center;
-  padding-top: 40px;
   flex-direction: column;
 }
 
@@ -55,18 +54,37 @@ body {
 .button {
   align-items: center;
   border: 1px solid #DFDFDF;
-  border-radius: 20px;
+  border-radius: 15px;
   cursor: pointer;
   display: flex;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   justify-content: center;
   text-decoration: none;
-  margin-left: 15px;
 }
 .hidden{
   display: none;
 }
+
+/* navbar */
+.navbar {
+  width: 60%;
+  height: 80px;
+  background-color:darkseagreen;
+  display: flex;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  justify-content: center;
+}
+
+.navbar a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: white;
+}
+/* navbar kraj */
 
 /* CREATE POST PAGE CSS */
 
