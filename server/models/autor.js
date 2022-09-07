@@ -13,8 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     });
 
 
-    Autor.associate = models => {
-        Autor.belongsTo(models.Knjiga);
+    Autor.associate = (models) => {
+        Autor.hasMany(models.Knjiga,{
+        onDelete: "cascade", //ako izbrisemo autora, izbrisi sve knjige vezane za njega
+    });
     };
     return Autor;
 };

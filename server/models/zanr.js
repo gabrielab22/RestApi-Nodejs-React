@@ -13,8 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     });
 
 
-    Zanr.associate = models => {
-        Zanr.belongsTo(models.Knjiga);
+    Zanr.associate = (models) => {
+        Zanr.hasMany(models.Knjiga, {
+            onDelete: "cascade", //ako izbrisemo zanr, izbrisi sve knjige vezane za njega
+        });
     };
     return Zanr;
 };

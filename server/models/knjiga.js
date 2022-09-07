@@ -9,17 +9,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        id_autora: {
-            type: DataTypes.BIGINT,
-            allowNull: false,
-        },
         godina_izdanja: {
             type: DataTypes.DATE,
             allowNull: false
-        },
-        id_zanra: {
-            type: DataTypes.BIGINT,
-            allowNull: false,
         },
         dostupnost: {
             type: DataTypes.BOOLEAN,
@@ -35,11 +27,6 @@ module.exports = (sequelize, DataTypes) => {
         }
 
     });
-
-    Knjiga.associate = models => {
-        Knjiga.hasOne(models.Autor);
-        Knjiga.hasOne(models.Zanr);
-    };
 
     return Knjiga;
 };
