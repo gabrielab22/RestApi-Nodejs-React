@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         administrator: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BOOLEAN,
             allowNull: false
         },
         iznajmljene: {
