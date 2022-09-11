@@ -3,6 +3,7 @@ import '../App.css'
 import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup'
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 function KreirajKnjigu() {
     const initialValues = {
@@ -26,11 +27,23 @@ function KreirajKnjigu() {
         zakasnina: Yup.number(),
         datum_posudbe: Yup.date()
     });
-    
+
+    let navigate = useNavigate();
     const onSubmit = (data) => {
         console.log(data)
-        axios.post("http://localhost:3001/knjige", data).then((response) => {
-            console.log("Worked!!")
+        axios.post("http://localhost:3001/knjige", data, {
+            headers: {
+                accessToken: sessionStorage.getItem("accessToken"),
+            },
+        }).then((response) => {
+            if (response.data.error){
+                console.log(response.data.error);
+                alert("Knjiga nije kreirana!!")
+            }
+            else{
+                console.log("Worked!!")
+                navigate(`/`);
+            }
           });
         
     };

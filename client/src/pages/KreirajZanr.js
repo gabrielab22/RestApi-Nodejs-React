@@ -3,6 +3,7 @@ import '../App.css'
 import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup'
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 function KreirajZanr() {
     const initialValues = {
@@ -15,10 +16,13 @@ function KreirajZanr() {
         naziv_zanra: Yup.string()
     });
     
+    let navigate = useNavigate();
+
     const onSubmit = (data) => {
         console.log(data)
         axios.post("http://localhost:3001/zanrovi", data).then((response) => {
             console.log("Worked!!")
+            navigate(`/`);
           });
         
     };

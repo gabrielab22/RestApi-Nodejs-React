@@ -3,6 +3,7 @@ import '../App.css';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup'
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 function KreirajKorisnika() {
 
@@ -22,10 +23,12 @@ function KreirajKorisnika() {
         iznajmljene: Yup.string()
     });
 
+    let navigate = useNavigate();
     const onSubmit = (data) => {
         console.log(data)
         axios.post("http://localhost:3001/korisnici", data).then((response) => {
             console.log("Worked!!")
+            navigate(`/login`);
           });
 
     };

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { Korisnik } = require('../models');
 
+const { sign } = require('jsonwebtoken');
+
 router.get('/', async (req, res) => {
     const korisnici = await Korisnik.findAll();
     res.json(korisnici);
@@ -33,7 +35,10 @@ router.post("/login", async (req, res) => {
     const result = password.localeCompare(korisnik.password);
     if (result) res.json({error: "Kriva kombinacija email-a i lozinke"});
 
-    res.json("You are logged in");
+    const accessToken = sign({ email: korisnik.email, id_korisnika: korisnik.id_korisnika}, "tajnarijec");
+
+
+    res.json(accessToken);
 });
 
 module.exports = router;
