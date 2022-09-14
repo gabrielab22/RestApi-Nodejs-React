@@ -25,19 +25,27 @@ body {
 }
 
 .knjiga .naziv_knjige {
-  flex: 20%;
+  flex: 30%;
   border-bottom: 1px solid lightgray;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   display: grid;
   place-content: center;
   color: white;
+  font-weight: bold;
+}
+
+.knjiga .autor {
+  flex: 40%;
+  display: grid;
+  place-content: center;
 }
 
 .knjiga .godina {
-  flex: 60%;
+  flex: 20%;
   display: grid;
   place-content: center;
+  margin-top: 2px;
 }
 
 .knjiga .footer {
@@ -62,15 +70,16 @@ body {
   justify-content: center;
   text-decoration: none;
 }
-.hidden{
-  display: none;
+
+.hidden {
+  opacity: 0
 }
 
 /* navbar */
 .navbar {
   width: 60%;
   height: 70px;
-  background-color:darkseagreen;
+  background-color: darkseagreen;
   display: flex;
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
@@ -85,6 +94,7 @@ body {
   color: white;
   font-size: 20px;
 }
+
 /* navbar kraj */
 
 /* CREATE POST PAGE CSS */
@@ -97,6 +107,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .formContainer {
   display: flex;
   flex-direction: column;
