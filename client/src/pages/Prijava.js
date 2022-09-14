@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
-function Prijava() {
+function Prijava({ setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,11 +11,13 @@ function Prijava() {
   const prijava = () => {
     const data = { email: email, password: password };
     axios.post("http://localhost:3001/korisnici/login", data).then((response) => {
-      if (response.data.error){
+      if (response.data.error) {
         alert(response.data.error);
-      } 
-      else{
+      }
+      else {
         sessionStorage.setItem("accessToken", response.data);
+        console.log("accessToken", response.data)
+        setUser(response.data);
         navigate(`/`);
       }
     });

@@ -19,26 +19,42 @@ router.get('/byId/:id_korisnika', async (req, res) => {
 router.post("/", async (req, res) => {
     const korisnik = req.body;
 
-    await Korisnik.create(korisnik);
-    
-    res.json(korisnik);
+    const noviKorisnik = await Korisnik.create(korisnik);
+
+    res.json(noviKorisnik);
 });
 
+router.post("/update", async (req, res) => {
+    const korisnik = req.body;
+
+    try {
+        const noviKorisnik = await Korisnik.update(
+            { iznajmljene: korisnik.iznajmljene },
+            {
+                where: { id_korisnika: korisnik.id_korisnika },
+            }
+        );
+
+        res.json(noviKorisnik);
+    } catch (error) {
+        res.json({ message: 'error', error })
+    }
+});
 
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
-    const korisnik = await Korisnik.findOne({ where: {email: email}});
+    const korisnik = await Korisnik.findOne({ where: { email: email } });
 
-    if (!korisnik) res.json({error: "Korisnik ne postoji!"});
-    
+    if (!korisnik) res.json({ error: "Korisnik ne postoji!" });
+
     const result = password.localeCompare(korisnik.password);
-    if (result) res.json({error: "Kriva kombinacija email-a i lozinke"});
+    if (result) res.json({ error: "Kriva kombinacija email-a i lozinke" });
 
-    const accessToken = sign({ email: korisnik.email, id_korisnika: korisnik.id_korisnika}, "tajnarijec");
+    const accessToken = sign({ email: korisnik.email, id_korisnika: korisnik.id_korisnika }, "tajnarijec");
 
 
-    res.json(accessToken);
+    res.json({ accessToken, ...korisnik.dataValues });
 });
 
 module.exports = router;
