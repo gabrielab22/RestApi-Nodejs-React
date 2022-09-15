@@ -19,6 +19,7 @@ function Home({ user, listaKnjiga, setListaKnjiga }) {
         await axios.post('http://localhost:3001/knjige/update', {
           ...value,
           dostupnost: false,
+          dostupna_za: 20,
         })
 
       } catch (error) {
@@ -52,13 +53,19 @@ function Home({ user, listaKnjiga, setListaKnjiga }) {
               style={{
                 backgroundColor: uvjet ? "green" : "lightcoral"
               }}
-            >
+            >             
               <button
                 className={uvjet ? "button" : "hidden"}
                 onClick={() => rezervirajKnjigu(value)}
               >
                 Rezerviraj
               </button>
+              <b
+                className={uvjet ? "hidden" : "stanje"}
+              > Na stanju za:
+                {value.dostupna_za} dana
+              </b>
+              
             </div>
           </div>
         );

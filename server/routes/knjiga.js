@@ -20,7 +20,8 @@ router.post("/update", async (req, res) => {
     const knjiga = req.body;
 
     const novaKnjiga = await Knjiga.update(
-        { dostupnost: knjiga.dostupnost },
+        { dostupnost: knjiga.dostupnost,
+        dostupna_za: knjiga.dostupna_za },
         {
             where: { id_knjige: knjiga.id_knjige },
         }

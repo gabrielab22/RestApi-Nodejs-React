@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
         dostupnost: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
+        },
+        dostupna_za: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
         }
 
     });
