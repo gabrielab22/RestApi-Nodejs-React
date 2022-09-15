@@ -32,8 +32,8 @@ function App() {
       <Router>
         <div className='navbar'>
           <Link to="/">Home</Link>
-          <Link to="/login">Prijava</Link>
           <Link to="/rezervacije">Rezervacije</Link>
+          <Link to="/login">Prijava</Link>
           <Link to="/kreirajkorisnika">Registracija</Link>
           <Link to="/kreirajknjigu">Kreiraj knjigu</Link>
           <Link to="/kreirajautora">Kreiraj autora</Link>

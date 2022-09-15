@@ -46,11 +46,11 @@ function Home({ user, listaKnjiga, setListaKnjiga }) {
                 <div className={autorUvjet ? "autor" : "hidden"} > {autorUvjet ? autori[k].naziv_autora : ""} </div>
               )
             })}
-            <div className="godina">  ode ide autor, {value.id_autora} <br /> {value.godina_izdanja} </div>
+            <div className="godina"> {value.godina_izdanja} </div>
             <div
               className="footer"
               style={{
-                backgroundColor: uvjet ? "green" : "red"
+                backgroundColor: uvjet ? "green" : "lightcoral"
               }}
             >
               <button

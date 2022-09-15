@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-function RezerviraneKnjige() {
+function RezerviraneKnjige({ user }) {
     const [listaKnjiga, setListaKnjiga] = useState([]);
     const [autori, setAutor] = useState([]);
 
@@ -18,6 +18,27 @@ function RezerviraneKnjige() {
         });
     }, []);
 
+
+    const vratiKnjigu = async (value) => {
+        if (!value.dostupnost) {
+          console.log({ user });
+          try {
+            /*await axios.post('http://localhost:3001/korisnici/update', {
+              ...user,
+              iznajmljene: JSON.stringify([value.id_knjige, ...(user.iznajmljene || [])]),
+            })*/
+    
+            await axios.post('http://localhost:3001/knjige/update', {
+              ...value,
+              dostupnost: true,
+            })
+    
+          } catch (error) {
+            console.log('error', error);
+          }
+        }
+      };
+
     return (
         <div className="App">
             {listaKnjiga.map((value, key) => {
@@ -32,7 +53,7 @@ function RezerviraneKnjige() {
                         )
                     })}
                     <div className='godina'> {value.godina_izdanja} </div>
-                    <div className="footer" style={{ backgroundColor: "lightcoral" }}> <button className={uvjet ? "button" : "hidden"}> Knjiga vraćena</button> </div>
+                    <div className="footer" style={{ backgroundColor: "lightcoral" }}> <button className={uvjet ? "button" : "hidden"} onClick={() => vratiKnjigu(value)}> Knjiga vraćena</button> </div>
                 </div>;
             })}
 
