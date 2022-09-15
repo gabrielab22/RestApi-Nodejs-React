@@ -13,19 +13,17 @@ function KreirajKnjigu() {
         godina_izdanja:"",
         id_zanra:"",
         dostupnost:"",
-        zakasnina:"",
-        datum_posudbe:""
+        dostupna_za:"",
     };
 
     const validateSchema = Yup.object().shape({
         id_knjige: Yup.string(),
         naziv_knjige: Yup.string(),
         id_autora: Yup.string(),
-        godina_izdanja: Yup.date(),
+        godina_izdanja: Yup.string(),
         id_zanra: Yup.string(),
         dostupnost: Yup.bool(),
-        zakasnina: Yup.number(),
-        datum_posudbe: Yup.date()
+        dostupna_za: Yup.number(),
     });
 
     let navigate = useNavigate();
@@ -63,10 +61,8 @@ function KreirajKnjigu() {
                 <Field name="godina_izdanja" id="field" placeholder="Unesite godinu izdavanja"/>
                 <label> Dostupnost: </label>
                 <Field name="dostupnost" id="field" options={dostupnost} placeholder="true/false"/>
-                <label> Zakasnina: </label>
-                <Field name="zakasnina" id="field" placeholder="0.0"/>
-                <label> Datum posudbe: </label>
-                <Field name="datum_posudbe" id="field" placeholder="1.1.2000"/>
+                <label> Dostupna za: </label>
+                <Field name="dostupna_za" id="field" placeholder="npr. 3 (dana)"/>
                 <label> ID autora: </label>
                 <Field name="AutorIdAutora" id="field" placeholder="Unesite ID autora"/>
                 <label> ID zanra: </label>

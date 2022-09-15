@@ -10,20 +10,16 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         godina_izdanja: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false
         },
         dostupnost: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        zakasnina: {
-            type: DataTypes.FLOAT,
+        dostupna_za: {
+            type: DataTypes.INTEGER,
             allowNull: false,
-        },
-        datum_posudbe: {
-            type: DataTypes.DATE,
-            allowNull: false
         }
 
     });

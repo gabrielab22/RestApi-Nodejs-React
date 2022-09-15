@@ -19,6 +19,7 @@ function Home({ user, listaKnjiga, setListaKnjiga }) {
         await axios.post('http://localhost:3001/knjige/update', {
           ...value,
           dostupnost: false,
+          dostupna_za: 20,
         })
 
       } catch (error) {
@@ -46,19 +47,25 @@ function Home({ user, listaKnjiga, setListaKnjiga }) {
                 <div className={autorUvjet ? "autor" : "hidden"} > {autorUvjet ? autori[k].naziv_autora : ""} </div>
               )
             })}
-            <div className="godina">  ode ide autor, {value.id_autora} <br /> {value.godina_izdanja} </div>
+            <div className="godina"> {value.godina_izdanja} </div>
             <div
               className="footer"
               style={{
-                backgroundColor: uvjet ? "green" : "red"
+                backgroundColor: uvjet ? "green" : "lightcoral"
               }}
-            >
+            >             
               <button
                 className={uvjet ? "button" : "hidden"}
                 onClick={() => rezervirajKnjigu(value)}
               >
                 Rezerviraj
               </button>
+              <b
+                className={uvjet ? "hidden" : "stanje"}
+              > Na stanju za:
+                {value.dostupna_za} dana
+              </b>
+              
             </div>
           </div>
         );
