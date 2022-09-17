@@ -7,6 +7,7 @@ import KreirajKorisnika from './pages/KreirajKorisnika';
 import KreirajAutora from './pages/KreirajAutora';
 import KreirajZanr from './pages/KreirajZanr';
 import Prijava from './pages/Prijava';
+import Odjava from './pages/Odjava';
 import RezerviraneKnjige from './pages/RezerviraneKnjige';
 import axios from 'axios';
 
@@ -42,19 +43,21 @@ function App() {
       <Router>
         <div className='navbar'>
           <Link to="/">Home</Link>
-          <Link to="/rezervacije">Rezervacije</Link>
-          <Link to="/login">Prijava</Link>
-          <Link to="/kreirajkorisnika">Registracija</Link>
+          
           {user ? (user.administrator ? [
+            <Link to="/rezervacije">Rezervacije</Link>,
             <Link to="/kreirajknjigu">Kreiraj knjigu</Link>,
             <Link to="/kreirajautora">Kreiraj autora</Link>,
             <Link to="/kreirajzanr">Kreiraj žanr</Link>
           ] : null) : null}
+          {user ? <Link to="/logout">Odjava</Link> : <Link to="/login">Prijava</Link>}
+          <Link to="/kreirajkorisnika">Registracija</Link>
         </div>
         <Routes>
           <Route path="/" element={<Home user={user} listaKnjiga={listaKnjiga} setListaKnjiga={setListaKnjiga} />} />
           <Route path="/rezervacije" element={<RezerviraneKnjige />} />
           <Route path="/login" element={<Prijava user = {user} setUser={setUser} />} />
+          <Route path="/logout" element={<Odjava user = {user} setUser={setUser} />} />
           <Route path="/kreirajkorisnika" element={<KreirajKorisnika />} />
           <Route path="/kreirajknjigu" element={<KreirajKnjigu />} />
           <Route path="/kreirajautora" element={<KreirajAutora />} />
