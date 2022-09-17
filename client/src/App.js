@@ -16,7 +16,6 @@ function App() {
   const [user, setUser] = useState();
   const [listaKnjiga, setListaKnjiga] = useState([]);
 
-
   useEffect(() => {
     axios.get("http://localhost:3001/knjige").then((response) => {
       console.log('response.data', response.data);
@@ -42,7 +41,7 @@ function App() {
     <div className="App">
       <Router>
         <div className='navbar'>
-          <Link to="/">Home</Link>
+          <Link to="/">Knjige</Link>
           
           {user ? (user.administrator ? [
             <Link to="/rezervacije">Rezervacije</Link>,
