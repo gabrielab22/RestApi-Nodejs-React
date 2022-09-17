@@ -21,7 +21,6 @@ function Home({ user, listaKnjiga, setListaKnjiga }) {
           dostupnost: false,
           dostupna_za: 20,
         })
-
       } catch (error) {
         console.log('error', error);
       }
@@ -53,7 +52,7 @@ function Home({ user, listaKnjiga, setListaKnjiga }) {
               style={{
                 backgroundColor: uvjet ? "green" : "lightcoral"
               }}
-            >             
+            >
               <button
                 className={uvjet ? "button" : "hidden"}
                 onClick={() => rezervirajKnjigu(value)}
@@ -65,7 +64,7 @@ function Home({ user, listaKnjiga, setListaKnjiga }) {
               > Na stanju za:
                 {value.dostupna_za} dana
               </b>
-              
+
             </div>
           </div>
         );
