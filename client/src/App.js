@@ -10,6 +10,7 @@ import Prijava from './pages/Prijava';
 import Odjava from './pages/Odjava';
 import RezerviraneKnjige from './pages/RezerviraneKnjige';
 import axios from 'axios';
+import Details from './pages/Details';
 
 function App() {
 
@@ -49,8 +50,11 @@ function App() {
             <Link to="/kreirajautora">Kreiraj autora</Link>,
             <Link to="/kreirajzanr">Kreiraj žanr</Link>
           ] : null) : null}
-          {user ? <Link to="/logout">Odjava</Link> : <Link to="/login">Prijava</Link>}
-          <Link to="/kreirajkorisnika">Registracija</Link>
+          {user ? [<Link to="/details/:id_korisnika">Profil</Link>, 
+                  <Link to="/logout">Odjava</Link>] 
+                : [<Link to="/login">Prijava</Link>,
+                  <Link to="/kreirajkorisnika">Registracija</Link>]}
+          
         </div>
         <Routes>
           <Route path="/" element={<Home user={user} listaKnjiga={listaKnjiga} setListaKnjiga={setListaKnjiga} />} />
@@ -61,6 +65,7 @@ function App() {
           <Route path="/kreirajknjigu" element={<KreirajKnjigu />} />
           <Route path="/kreirajautora" element={<KreirajAutora />} />
           <Route path="/kreirajzanr" element={<KreirajZanr />} />
+          <Route path="/details/:id_korisnika" element={<Details />} />
         </Routes>
       </Router>
     </div>

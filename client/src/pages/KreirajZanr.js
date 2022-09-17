@@ -27,8 +27,6 @@ function KreirajZanr() {
         
     };
 
-    const dostupnost = [true, false];
-
     return (
         <div className = "kreirajKorisnika">
             <Formik initialValues = {initialValues} onSubmit = {onSubmit} validationSchema={validateSchema}>
