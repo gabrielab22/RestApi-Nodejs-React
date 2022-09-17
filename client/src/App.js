@@ -25,6 +25,16 @@ function App() {
 
   useEffect(() => {
     console.log({ user });
+    if (!user){
+      if (sessionStorage.getItem("user")){
+        axios.get(`http://localhost:3001/korisnici/byId/${sessionStorage.getItem("user")}`).then((response) => {
+        console.log('response.data', response.data);
+        setUser(response.data);
+      });
+      }
+    }
+
+    console.log(sessionStorage.getItem("user"), user);
   }, [user]);
 
   return (
@@ -44,7 +54,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home user={user} listaKnjiga={listaKnjiga} setListaKnjiga={setListaKnjiga} />} />
           <Route path="/rezervacije" element={<RezerviraneKnjige />} />
-          <Route path="/login" element={<Prijava setUser={setUser} />} />
+          <Route path="/login" element={<Prijava user = {user} setUser={setUser} />} />
           <Route path="/kreirajkorisnika" element={<KreirajKorisnika />} />
           <Route path="/kreirajknjigu" element={<KreirajKnjigu />} />
           <Route path="/kreirajautora" element={<KreirajAutora />} />
