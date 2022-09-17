@@ -35,11 +35,11 @@ function App() {
           <Link to="/rezervacije">Rezervacije</Link>
           <Link to="/login">Prijava</Link>
           <Link to="/kreirajkorisnika">Registracija</Link>
-          {user.administrator ? [
+          {user ? (user.administrator ? [
             <Link to="/kreirajknjigu">Kreiraj knjigu</Link>,
             <Link to="/kreirajautora">Kreiraj autora</Link>,
             <Link to="/kreirajzanr">Kreiraj žanr</Link>
-          ] : null}
+          ] : null) : null}
         </div>
         <Routes>
           <Route path="/" element={<Home user={user} listaKnjiga={listaKnjiga} setListaKnjiga={setListaKnjiga} />} />
