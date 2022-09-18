@@ -23,21 +23,19 @@ function Details() {
     }, []);
 
     return <div className="App"> 
-        <p>Email: {korisnik.email} </p>
+        <p>Korisnik: {korisnik.email} </p>
         {knjige?.map((value,key) => {
             return (
                 [iznajmljene]?.map((v, k) => {
-                    const uvjet = v === knjige[key].id_knjige;
+                    const uvjet = parseInt(iznajmljene[k + 1]) === knjige[key].id_knjige;
                     return( uvjet ?
-                            <div className="App">
-                                <p>Naziv knjige: {knjige[key].naziv_knjige} </p>
+                            <div>
+                                <p>Naziv iznajmljene knjige: {knjige[key].naziv_knjige} </p>
                             </div> : null)
 
                     })     
             )
         })}
-        
-
          </div>;  
 }
 
