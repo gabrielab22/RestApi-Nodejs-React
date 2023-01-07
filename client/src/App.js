@@ -9,6 +9,7 @@ import KreirajZanr from './pages/KreirajZanr';
 import Prijava from './pages/Prijava';
 import Odjava from './pages/Odjava';
 import RezerviraneKnjige from './pages/RezerviraneKnjige';
+import Filter from './pages/Filter';
 import axios from 'axios';
 import Details from './pages/Details';
 
@@ -46,6 +47,7 @@ function App() {
           
           {user ? (user.administrator ? [
             <Link to="/rezervacije">Rezervacije</Link>,
+            <Link to="/filter">Filtriraj knjige</Link>,
             <Link to="/kreirajknjigu">Kreiraj knjigu</Link>,
             <Link to="/kreirajautora">Kreiraj autora</Link>,
             <Link to="/kreirajzanr">Kreiraj žanr</Link>
@@ -59,6 +61,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home user={user} listaKnjiga={listaKnjiga} setListaKnjiga={setListaKnjiga} />} />
           <Route path="/rezervacije" element={<RezerviraneKnjige />} />
+          <Route path="/filter" element={<Filter user={user} listaKnjiga={listaKnjiga} setListaKnjiga={setListaKnjiga} />} />
           <Route path="/login" element={<Prijava user = {user} setUser={setUser} />} />
           <Route path="/logout" element={<Odjava user = {user} setUser={setUser} />} />
           <Route path="/kreirajkorisnika" element={<KreirajKorisnika />} />
