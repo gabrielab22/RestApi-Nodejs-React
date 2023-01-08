@@ -20,6 +20,7 @@ function Home({ user, listaKnjiga, setListaKnjiga }) {
           ...value,
           dostupnost: false,
           dostupna_za: 20,
+          count_iznajmljena: value.count_iznajmljena + 1,
         })
       } catch (error) {
         console.log('error', error);

@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
         dostupna_za: {
             type: DataTypes.INTEGER,
             allowNull: false,
+        },
+        count_iznajmljena:{
+            type: DataTypes.INTEGER,
+            allowNull:true
         }
 
     });

@@ -14,6 +14,7 @@ function KreirajKnjigu() {
         id_zanra:"",
         dostupnost:"",
         dostupna_za:"",
+        count_iznajmljena:0,
     };
 
     const validateSchema = Yup.object().shape({
@@ -24,6 +25,7 @@ function KreirajKnjigu() {
         id_zanra: Yup.string(),
         dostupnost: Yup.bool(),
         dostupna_za: Yup.number(),
+        count_iznajmljena: Yup.number(),
     });
 
     let navigate = useNavigate();

@@ -91,6 +91,30 @@ function Filter({ user, listaKnjiga, setListaKnjiga }) {
     setKnjige(listaKnjiga);
   };
 
+  const handleMostFrequent = (evt) => {
+    setKnjige([]);
+    var tempKnjige = [];
+  
+    const maxCount = Math.max(...listaKnjiga.map(knjiga => knjiga.count_iznajmljena));
+    listaKnjiga.forEach((knjiga) => {
+      if (knjiga.count_iznajmljena === maxCount) {
+        tempKnjige.push(knjiga);
+      }
+    });
+    setKnjige(tempKnjige);
+  };
+
+  const handleNever = (evt) => {
+    setKnjige([]);
+    var tempKnjige = [];
+    listaKnjiga.forEach((knjiga) => {
+      if (knjiga.count_iznajmljena == 0) {
+        tempKnjige.push(knjiga);
+      }
+    });
+    setKnjige(tempKnjige);
+  };
+
   useEffect(() => {
     axios.get("http://localhost:3001/autori").then((response) => {
       setAutor(response.data);
@@ -114,6 +138,8 @@ function Filter({ user, listaKnjiga, setListaKnjiga }) {
       <button onClick={handleFilterAvailableBooks}>Dostupne knjige</button>
       <button onClick={handleFilterUnavailableBooks}>Nedostupne knjige</button>
       <button onClick={handleReturnAllBooks}>Sve knjige</button>
+      <button onClick={handleMostFrequent}>Najcesce posudjivane knjige</button>
+      <button onClick={handleNever}>Nikad posudjene knjige</button>
       {knjige.map((value, index) => {
         const uvjet = !!value.dostupnost;
         return (
