@@ -1,21 +1,42 @@
-import React from "react";
-import '../App.css'
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {Formik, Form, Field} from 'formik';
-import * as Yup from 'yup'
+import '../App.css';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup'
 
-function KreirajKnjigu() {
-    const initialValues = {
-        id_knjige: "",
-        naziv_knjige:"",
-        id_autora:"",
-        godina_izdanja:"",
-        id_zanra:"",
-        dostupnost:"",
-        dostupna_za:"",
-        count_iznajmljena:0,
+function AzurirajKnjigu() {
+
+
+    const location = useLocation();
+
+    const { knjiga } = location.state;
+
+    const [idKnjige, setIdKnjige] = useState([]);
+    const [nazivKnjige, setNazivKnjige] = useState([]);
+    const [godinaIzdanja, setGodinaIzdanja] = useState([]);
+    const [dostupnost, setDostupnost] = useState([]);
+    const [dostupnaZa, setDostupnaZa] = useState([]);
+    const [autorIdAutora, setAutorIdAutora] = useState([]);
+    const [zanrIdZanra, setZanrIdZanra] = useState([]);
+
+    const onSubmit = async (knjiga) => {
+        try {
+            await axios.post('http://localhost:3001/knjige/update', {
+                ...knjiga,
+                dostupnost: false,
+                dostupna_za: 20,
+            })
+        } catch (error) {
+              console.log('error', error);
+          }
+        
     };
+
+
+    useEffect(() => {
+        console.log(knjiga);
+    }, []);
 
     const validateSchema = Yup.object().shape({
         id_knjige: Yup.string(),
@@ -25,34 +46,11 @@ function KreirajKnjigu() {
         id_zanra: Yup.string(),
         dostupnost: Yup.bool(),
         dostupna_za: Yup.number(),
-        count_iznajmljena: Yup.number(),
     });
-
-    let navigate = useNavigate();
-    const onSubmit = (data) => {
-        console.log(data)
-        axios.post("http://localhost:3001/knjige", data, {
-            headers: {
-                accessToken: sessionStorage.getItem("accessToken"),
-            },
-        }).then((response) => {
-            if (response.data.error){
-                console.log(response.data.error);
-                alert("Knjiga nije kreirana!!")
-            }
-            else{
-                console.log("Worked!!")
-                navigate(`/`);
-            }
-          });
-        
-    };
-
-    const dostupnost = [true, false];
 
     return (
         <div className = "kreirajKorisnika">
-            <Formik initialValues = {initialValues} onSubmit = {onSubmit} validationSchema={validateSchema}>
+            <Formik initialValues = {knjiga} onSubmit = {onSubmit} validationSchema={validateSchema}>
             <Form className="formContainer">
             <br/>
                 <label> ID: </label>
@@ -70,11 +68,12 @@ function KreirajKnjigu() {
                 <label> ID zanra: </label>
                 <Field name="ZanrIdZanra" id="field" placeholder="Unesite ID zanra"/>
                 <br/><br/>
-                <button type="submit"> Kreiraj knjigu </button>
+                <button type="submit"> Ažuriraj knjigu </button>
             </Form>
             </Formik>
         </div>
-    );
-  }
-  
-  export default KreirajKnjigu;
+    )
+}
+
+
+export default AzurirajKnjigu;
