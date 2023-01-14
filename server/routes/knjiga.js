@@ -22,12 +22,16 @@ router.post("/update", async (req, res) => {
     const novaKnjiga = await Knjiga.update(
         { dostupnost: knjiga.dostupnost,
         dostupna_za: knjiga.dostupna_za,
+<<<<<<< HEAD
         count_iznajmljena: knjiga.count_iznajmljena,
         naziv_knjige:  knjiga.naziv_knjige,
         id_autora: knjiga.id_autora,
         godina_izdanja: knjiga.godina_izdanja,
         id_zanra: knjiga.id_zanra,
         knjigu_posudio: knjiga.knjigu_posudio},
+=======
+        count_iznajmljena: knjiga.count_iznajmljena },
+>>>>>>> 084d27a62051b357d85de01ecc78ef87cc0d635b
         {
             where: { id_knjige: knjiga.id_knjige },
         }

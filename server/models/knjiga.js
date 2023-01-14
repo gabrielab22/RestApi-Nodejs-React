@@ -24,10 +24,13 @@ module.exports = (sequelize, DataTypes) => {
         count_iznajmljena:{
             type: DataTypes.INTEGER,
             allowNull:true
+<<<<<<< HEAD
         },
         knjigu_posudio: {
             type: DataTypes.STRING,
             allowNull: true
+=======
+>>>>>>> 084d27a62051b357d85de01ecc78ef87cc0d635b
         }
     });
 
